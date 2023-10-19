@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        center {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h2, h3 {
+            color: #333;
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+
+        <form method="post" action='/user/insert_user'>
+            <h2>Excell Institute</h2>
+            <h3>Create An Account</h3><br>
+            <input type="text" placeholder="Enter Your First Name" id="userFirstname" name="userFirstname"><br>
+            <input type="text" placeholder="Enter Your Last Name" id="userLastname" name="userLastname"><br>
+            <input type="radio" id="male" value="male" name="userGender"><label for="male">Male</label>
+            <input type="radio" id="female" value="female" name="userGender"><label for="female">Female</label><br>
+            <input type="email" placeholder="Enter Your Email" id="loginUsername" name="loginUsername"><br>
+            <textarea name="userAddress" placeholder="Enter Your Address" id="userAddress"></textarea><br>
+            <button type="submit">Sign Up</button>
+            <p>Already Registered? <a href="/">Login</a></p>
+        </form>
+
+        {% with message = get_flashed_messages() %}
+            {% if message %}
+            <div class="error-message">{{ message[0] }}</div>
+            {% endif %}
+            {% endwith %}
+    </center>
+</body>
+
+</html>

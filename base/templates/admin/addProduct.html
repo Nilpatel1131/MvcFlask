@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        center {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+
+        select,
+        input[type="text"],
+        input[type="file"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>::Add Product Page::</h1>
+        <form action="/admin/insert_product" method="post" enctype="multipart/form-data">
+            <select name="productCategoryId" id="productCategoryId" onchange="loadSubCategory()">
+                <option value="none">Select Category</option>
+                {% for row in category_vo_list %}
+                    <option value="{{ row.category_id }}">{{ row.category_name }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <select name="productSubcategoryId" id="productSubcategoryId">
+                <option value="none">Select Subcategory</option>
+            </select><br><br>
+            <label><b>Product Name: </b></label><input type="text" name="productName"><br>
+            <label><b>Product Description: </b></label><input type="text" name="productDescription"><br>
+            <label><b>Product Quantity: </b></label><input type="text" name="productQuantity"><br>
+            <label><b>Product Price: </b></label><input type="text" name="productPrice"><br>
+            <label><b>File Upload: </b></label><input type="file" name="productImage"><br><br>
+            <button type="submit" name="submit">SUBMIT</button>
+            <a href="/"><b>Home Page....</b></a>
+        </form>
+    </center>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        center {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #333;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td a {
+            text-decoration: none;
+            color: #4CAF50;
+            margin: 0 10px;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        a.home-link {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+
+        a.home-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>::View Category Page::</h1>
+        <table>
+            <tr>
+                <th>Category Name</th>
+                <th>Category Description</th>
+                <th>Delete Actions</th>
+                <th>Edit Actions</th>
+            </tr>
+            {% for data in category_vo_list %}
+            <tr>
+                <td>{{ data.category_name }}</td>
+                <td>{{ data.category_description }}</td>
+                <td><a href="/admin/delete_category?categoryId={{ data.category_id }}">Delete</a></td>
+                <td><a href="/admin/edit_category?categoryId={{ data.category_id }}">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/admin/home.html" class="home-link">Home Page....</a>
+    </center>
+</body>
+
+</html>

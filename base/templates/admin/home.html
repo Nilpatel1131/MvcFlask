@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        center {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 10px;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+        a.logout {
+            background-color: #f44336;
+        }
+
+        a.logout:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>Welcome to Home Page</h1><br><br>
+        <a href="/admin/load_category">Add Category</a><br><br><br>
+        <a href="/admin/view_category">View Category</a><br><br><br>
+        <a href="/admin/load_subcategory">Add SubCategory</a><br><br><br>
+        <a href="/admin/view_subcategory">View SubCategory</a><br><br><br>
+        <a href="/admin/load_product">Add Product</a><br><br><br>
+        <a href="/admin/view_product">View Product</a><br><br><br>
+        <a href="/admin/view_user">View User</a><br><br><br><br>
+        <a href="/admin/logout_session" class="logout">Logout</a>
+    </center>
+</body>
+
+</html>

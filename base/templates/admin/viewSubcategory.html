@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        center {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #333;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td a {
+            text-decoration: none;
+            color: #4CAF50;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        a.home-link {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        a.home-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>::View Subcategory Page::</h1>
+        <table border="2px solid Black">
+            <tr>
+                <th>SubCategory Name</th>
+                <th>SubCategory Description</th>
+                <th>Category</th>
+                <th>Delete Actions</th>
+                <th>Edit Actions</th>
+            </tr>
+            {% for data in subcategory_vo_list %}
+                <tr>
+                    <td>{{ data[0].subcategory_name }}</td>
+                    <td>{{ data[0].subcategory_description }}</td>
+                    <td>{{ data[1].category_name }}</td>
+                    <td><a href="/admin/delete_subcategory?subcategoryId={{ data[0].subcategory_id }}">Delete</a></td>
+                    <td><a href="/admin/edit_subcategory?subcategoryId={{ data[0].subcategory_id }}">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="/admin/home.html" class="home-link">Home Page....</a>
+    </center>
+</body>
+
+</html>

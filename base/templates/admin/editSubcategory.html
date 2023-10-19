@@ -1,0 +1,99 @@
+<html>
+
+<head>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        center {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+
+        select,
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+    </style>
+
+</head>
+<body>
+<center>
+        <h1>::Edit SubCategory Page::</h1>
+<form action="/admin/update_subcategory" method="post">
+
+        <select name="subcategoryCategoryId">
+            <option value="select one"><b>Select Category</b></option>
+            {% for data in category_vo_list %}
+                {% if subcategory_vo_list[0].subcategory_category_id==data.category_id %}
+                    <option selected="selected" value="{{ data.category_id }}">{{ data.category_name }}</option>
+                {% else %}
+                    <option value="{{ data.category_id }}">{{ data.category_name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select><br><br>
+        <input type="hidden" name="subcategoryId" value="{{ subcategory_vo_list[0].subcategory_id }}">
+        <label>SubCategory Name: </label><input type="text" name="subcategoryName"
+                                                value="{{ subcategory_vo_list[0].subcategory_name }}"><br><br>
+        <label>SubCategory Description: </label><input type="text" name="subcategoryDescription"
+                                                       value="{{ subcategory_vo_list[0].subcategory_description }}"><br><br>
+        <button type="submit" name="submit">SUBMIT</button>
+
+
+</form>
+</center>
+</body>
+</html>

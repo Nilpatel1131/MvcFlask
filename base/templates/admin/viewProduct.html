@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        center {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #333;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td a {
+            text-decoration: none;
+            color: #4CAF50;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        a.home-link {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        a.home-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>::View Product Page::</h1>
+        <table border="2px solid Black">
+            <tr>
+                <th><b>Product Image</b></th>
+                <th><b>Product Name</b></th>
+                <th><b>Product Description</b></th>
+                <th><b>Product Quantity</b></th>
+                <th><b>Product Price</b></th>
+                <th><b>Total Price</b></th>
+                <th><b>Category</b></th>
+                <th><b>SubCategory</b></th>
+                <th>Delete Actions</th>
+                <th>Edit Actions</th>
+            </tr>
+            {% for data in product_vo_list %}
+                <tr>
+                    <td><a href="{{ data[0].product_image_path }}{{ data[0].product_image_name }}"
+                            target="_blank">View</a></td>
+                    <td>{{ data[0].product_name }}</td>
+                    <td>{{ data[0].product_description }}</td>
+                    <td>{{ data[0].product_quantity }}</td>
+                    <td>{{ data[0].product_price }}</td>
+                    <td>{{ data[0].product_total_price }}</td>
+                    <td>{{ data[1].category_name }}</td>
+                    <td>{{ data[2].subcategory_name }}</td>
+                    <td><a href="/admin/delete_product?productId={{ data[0].product_id }}">Delete</a></td>
+                    <td><a href="/admin/edit_product?productId={{ data[0].product_id }}">Edit</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="/admin/home.html" class="home-link">Home Page....</a>
+    </center>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        center {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h2, h3 {
+            color: #333;
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        div.error-message {
+            border: none;
+            color: red;
+            font-size: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <form action="/admin/validate_login" method="post">
+            <h2>Excell Institute</h2>
+            <h3>Login</h3><br>
+            <input type="email" placeholder="Enter Your Email" id="loginUsername" name="loginUsername"><br>
+            <input type="password" placeholder="Enter Your Password" id="loginPassword" name="loginPassword"><br>
+            <button type="submit">Login</button>
+            <br>
+            <p>You don't have an account? <a href="/user/load_user">Register</a></p>
+        </form>
+        <a href="/user/load_forget_password">Forget Password?</a>
+
+            {% with message = get_flashed_messages() %}
+            {% if message %}
+            <div class="error-message">{{ message[0] }}</div>
+            {% endif %}
+            {% endwith %}
+
+    </center>
+</body>
+
+</html>

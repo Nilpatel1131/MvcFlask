@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>User List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-danger {
+            background-color: #d9534f;
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #5cb85c;
+            color: white;
+        }
+
+        .btn-rounded {
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Address</th>
+{#                <th>Area</th>#}
+{#                <th>Hobbies</th>#}
+                <th>Username</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in user_vo_list %}
+            <tr>
+                <td>{{ row[0]['user_firstname'] }} {{ row[0]['user_lastname'] }}</td>
+                <td>{{ row[0]['user_gender'] }}</td>
+                <td>{{ row[0]['user_address'] }}</td>
+{#                <td>{{ row[2]['area_name'] }}</td>#}
+{#                <td>{{ row[0]['user_hobby'] }}</td>#}
+                <td>{{ row[1]['login_username'] }}</td>
+                <td>
+                    {% if row[1]['login_status'] %}
+                    <a class="btn btn-danger btn-rounded" href="/admin/block_user?loginId={{ row[1]['login_id'] }}">Block</a>
+                    {% elif not row[1]['login_status'] %}
+                    <a class="btn btn-success btn-rounded" href="/admin/unblock_user?loginId={{ row[1]['login_id'] }}">Unblock</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
